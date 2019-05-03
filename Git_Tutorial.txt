@@ -36,7 +36,7 @@ $ git clone https://github.com/nicolai-schwartze/SwingyNot.git
 5) Das Repository wird heruntergeladen und als Ordner gespeichert.
    In der Konsole muss in den neuen Ordner gewechselt werden (cd = change directory)
    
-$ cd EBS2_Conveyer_Belt/
+$ cd SwingyNot/
 
 6) Um die Bearbeitung hochladen zu können, muss die URL für den upstream spezifiziert werden.
    Dies ist üblicherweise das selbe Repository, das heruntergeladen wurde. 
