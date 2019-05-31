@@ -393,7 +393,7 @@ double initialValue(145,6)
  -1       0                  0       0                  1  280   # step2.offset
  -2  9.0000000000000002E-01  0       0                  6  256   # step2.startTime
  -1       0                  0       0                  1  280   # fixed.phi0
- -2  5.7000000000000002E-02  0       0                  4  256   # CPUtime
+ -2  9.7000000000000003E-02  0       0                  4  256   # CPUtime
  -2      20                  0       0                  4  256   # EventCounter
 
 

@@ -35,14 +35,21 @@ model ModelSwingyNot
   Modelica.Mechanics.Translational.Sources.Position position(useSupport=false,
                                                              exact=false)
     annotation (Placement(transformation(extent={{-46,74},{-26,94}})));
-  Modelica.Blocks.Sources.CombiTimeTable combiTimeTable(table=[0,0; 0.5,0.1; 1,
+  Modelica.Blocks.Sources.CombiTimeTable combiTimeTable(
+    tableOnFile=true,                                   table=[0,0; 0.5,0.1; 1,
         0.2; 1.5,0.35; 2,0.4; 2.5,0.41; 3,0.44; 3.5,0.46; 4,0.48; 4.5,0.5; 5,
         0.51; 5.5,0.55; 6,0.6; 6.5,0.7; 7,0.71; 7.5,0.73; 8,0.8; 8.5,0.85; 9,
-        0.9; 9.5,1], smoothness=Modelica.Blocks.Types.Smoothness.ContinuousDerivative)
+        0.9; 9.5,1],
+    tableName="path",
+    fileName=Modelica.Utilities.Files.loadResource(
+        "modelica://SwingyNot/Resources/data.mat"),
+                     smoothness=Modelica.Blocks.Types.Smoothness.ContinuousDerivative)
     annotation (Placement(transformation(extent={{-106,74},{-86,94}})));
 
   Real Result;
 
+algorithm
+    Result :=max(abs(revolute1.phi));
 
 equation
   connect(body1.frame_a, fixedTranslation.frame_a) annotation (Line(
@@ -73,7 +80,7 @@ equation
           84},{-12,66}},              color={0,127,0}));
   connect(combiTimeTable.y[1], position.s_ref) annotation (Line(points={{-85,84},
           {-48,84}},                   color={0,0,127}));
-  Result = abs(revolute1.phi);
+
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-140,-100},
             {100,100}}), graphics={Text(
           extent={{-196,114},{164,-114}},
