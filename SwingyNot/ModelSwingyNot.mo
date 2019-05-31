@@ -1,7 +1,8 @@
 within SwingyNot;
 model ModelSwingyNot
   inner Modelica.Mechanics.MultiBody.World world(g=9.81, n(displayUnit="1") = {
-      0,0,1}) annotation (Placement(transformation(extent={{-78,-38},{-58,-18}})));
+      0,0,-1})
+              annotation (Placement(transformation(extent={{-78,-38},{-58,-18}})));
   Modelica.Mechanics.MultiBody.Joints.Prismatic prismatic(useAxisFlange=true,
                                                           n(displayUnit="1")=
       {1,0,0}) annotation (Placement(transformation(extent={{-28,50},{-8,70}})));
@@ -10,7 +11,7 @@ model ModelSwingyNot
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={14,-60})));
-  Modelica.Mechanics.MultiBody.Parts.FixedTranslation fixedTranslation(r={1,0,0})
+  Modelica.Mechanics.MultiBody.Parts.FixedTranslation fixedTranslation(r={0,0,1})
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
@@ -20,7 +21,7 @@ model ModelSwingyNot
   Modelica.Mechanics.MultiBody.Joints.Revolute revolute1(
     useAxisFlange=true,
     n(displayUnit="1") = {0,1,0},
-    phi(fixed=true, start=-1.5707963267949),
+    phi(fixed=true, start=0),
     w(fixed=true))                                               annotation (Placement(transformation(extent={{-10,-10},
             {10,10}},
         rotation=90,
@@ -31,7 +32,8 @@ model ModelSwingyNot
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-30,30})));
-  Modelica.Mechanics.Translational.Sources.Position position(exact=false)
+  Modelica.Mechanics.Translational.Sources.Position position(useSupport=false,
+                                                             exact=false)
     annotation (Placement(transformation(extent={{-46,76},{-26,96}})));
   Modelica.Blocks.Sources.CombiTimeTable combiTimeTable(table=[0,0; 0.5,0.1; 1,
         0.2; 1.5,0.35; 2,0.4; 2.5,0.41; 3,0.44; 3.5,0.46; 4,0.48; 4.5,0.5; 5,
