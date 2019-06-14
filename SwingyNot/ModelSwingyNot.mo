@@ -1,5 +1,6 @@
 within SwingyNot;
 model ModelSwingyNot
+  import Modelica.Utilities.Streams;
   inner Modelica.Mechanics.MultiBody.World world(g=9.81, n(displayUnit="1") = {
       0,0,-1})
               annotation (Placement(transformation(extent={{-78,-38},{-58,-18}})));
@@ -48,9 +49,6 @@ model ModelSwingyNot
 
   Real Result;
 
-algorithm
-    Result :=max(abs(revolute1.phi));
-
 equation
   connect(body1.frame_a, fixedTranslation.frame_a) annotation (Line(
       points={{14,-50},{14,-26}},
@@ -80,6 +78,10 @@ equation
           84},{-12,66}},              color={0,127,0}));
   connect(combiTimeTable.y[1], position.s_ref) annotation (Line(points={{-85,84},
           {-48,84}},                   color={0,0,127}));
+
+  Result=  max(abs(revolute1.phi), Result);
+
+
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-140,-100},
             {100,100}}), graphics={Text(

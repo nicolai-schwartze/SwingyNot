@@ -1,6 +1,9 @@
 import platform
 import sys
+# Library On Laptop
 sys.path.append('C:\Program Files\Dymola 2019 FD01\Modelica\Library\python_interface\dymola.egg')
+# Library On PC
+sys.path.append('D:\Programme\Dymola2019\Modelica\Library\python_interface\dymola.egg')
 
 from dymola.dymola_interface import DymolaInterface
 from dymola.dymola_exception import DymolaException
